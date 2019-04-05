@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamDEV.Utils.Forms;
 
 namespace FormManagement {
     static class Program {
@@ -13,7 +14,15 @@ namespace FormManagement {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            FormTable.Register<Form1>();
+            FormTable.Register<Form2>();
+
+            Application.Run(
+                FormTable.Get<Form1>()
+            );
+            
+            FormTable.Cleanup();
         }
     }
 }
